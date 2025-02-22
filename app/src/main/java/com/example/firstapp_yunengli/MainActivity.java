@@ -6,11 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -20,21 +16,21 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Button aboutMeButton = findViewById(R.id.aboutMeButton);
-
         Button quickCalcButton = findViewById(R.id.quickCalcButton);
-        quickCalcButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, CalculatorActivity.class);
-                startActivity(intent);
-            }
+        Button contactsCollectorButton = findViewById(R.id.contactsCollectorButton);
+
+        quickCalcButton.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, CalculatorActivity.class);
+            startActivity(intent);
         });
 
-        aboutMeButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(MainActivity.this, "Name: Yuneng Li\nEmail: li.yunen@northeastern.edu", Toast.LENGTH_LONG).show();
-            }
+        aboutMeButton.setOnClickListener(v ->
+                Toast.makeText(MainActivity.this, "Name: Yuneng Li\nEmail: li.yunen@northeastern.edu", Toast.LENGTH_LONG).show()
+        );
+
+        contactsCollectorButton.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, ContactsActivity.class);
+            startActivity(intent);
         });
     }
 }
